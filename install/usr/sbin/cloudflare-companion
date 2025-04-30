@@ -204,11 +204,15 @@ def point_domain(name, domain_infos):
                     pass
             else:
                 try:
-                    if DRY_RUN:
-                        logger.info("DRY-RUN: POST to Cloudflare %s:, %s", domain_info['zone_id'], data)
-                    else:
-                        _ = cf.zones.dns_records.post(domain_info['zone_id'], data=data)
-                    logger.info("Created new record: %s to point to %s", name, domain_info['target_domain'])
+                    for record in records:
+                        if record['content'] != domain_info['target_domain']:
+                            if DRY_RUN:
+                                logger.info("DRY-RUN: POST to Cloudflare %s:, %s", domain_info['zone_id'], data)
+                            else:
+                                _ = cf.zones.dns_records.post(domain_info['zone_id'], data=data)
+                            logger.info("Created new record: %s to point to %s", name, domain_info['target_domain'])
+                        else:
+                            logger.info("Record already exists: %s points %s", name, domain_info['target_domain'])
                 except CloudFlare.exceptions.CloudFlareAPIError as ex:
                     logger.error('** %s - %d %s' % (name, ex, ex))
                     ok = False
