@@ -1,3 +1,12 @@
+## 7.3.4 2025-04-30 <GuyKh@github>
+
+   ### Added
+      - Pin to tiredofit/alpine:7.10.30
+
+   ### Changed
+      - Fix ERROR if record already exists (#53)
+
+
 ## 7.3.3 2024-12-07 <dave at tiredofit dot ca>
 
    ### Added
