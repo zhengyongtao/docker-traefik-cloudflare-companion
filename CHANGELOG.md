@@ -1,3 +1,9 @@
+## 7.4.0 2025-04-30 <GuyKh@github>
+
+   ### Added
+      - Update cloudflre python module to 4.1.x
+
+
 ## 7.3.4 2025-04-30 <GuyKh@github>
 
    ### Added
